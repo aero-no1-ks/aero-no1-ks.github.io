@@ -10,11 +10,7 @@
       app
     >
       <v-list>
-        <v-list-tile
-          value="true"
-          v-for="(item, i) in items"
-          :key="i"
-        >
+        <v-list-tile value="true" v-for="(item, i) in items" :key="i" :to='item.to'>
           <v-list-tile-action>
             <v-icon v-html="item.icon"></v-icon>
           </v-list-tile-action>
@@ -45,24 +41,11 @@
       </v-btn>
     </v-toolbar>
     <v-content>
-      <router-view/>
+      <v-slide-y-reverse-transition mode='out-in'>
+        <router-view />
+      </v-slide-y-reverse-transition>
     </v-content>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-tile @click="right = !right">
-          <v-list-tile-action>
-            <v-icon>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
+
     <v-footer :fixed="fixed" app>
       <span>&copy; 2017</span>
     </v-footer>
@@ -70,7 +53,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
   data () {
@@ -80,13 +62,25 @@ export default {
       fixed: false,
       items: [{
         icon: 'bubble_chart',
-        title: 'Inspire'
+        title: 'Inspire',
+        to: '/about',
+      }, {
+        icon: 'bubble_chart',
+        title: 'Inspire',
+        to: '/',
       }],
       miniVariant: false,
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js'
     }
+  },
+  created() {
+    if(!localStorage.getItem('route')) {
+      this.$router.push('/')
+      return localStorage.setItem('route', '/')
+    }
+    this.$router.push(localStorage.getItem('route'))
   }
 }
 </script>
