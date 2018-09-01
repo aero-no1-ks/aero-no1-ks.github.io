@@ -1,14 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      persistent
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      v-model="drawer"
-      enable-resize-watcher
-      fixed
-      app
-    >
+    <v-navigation-drawer temporary v-model='drawer' fixed app>
       <v-list>
         <v-list-tile value="true" v-for="(item, i) in items" :key="i" :to='item.to'>
           <v-list-tile-action>
@@ -20,12 +12,9 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar
-      app
-      :clipped-left="clipped"
-    >
+    <v-toolbar app fixed>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
+      <!-- <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
       </v-btn>
       <v-btn icon @click.stop="clipped = !clipped">
@@ -38,41 +27,41 @@
       <v-spacer></v-spacer>
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>menu</v-icon>
-      </v-btn>
+      </v-btn> -->
     </v-toolbar>
+
     <v-content>
       <v-slide-y-reverse-transition mode='out-in'>
-        <router-view />
+        <router-view class='pa-2' />
       </v-slide-y-reverse-transition>
     </v-content>
 
-    <v-footer :fixed="fixed" app>
+    <v-footer app>
       <span>&copy; 2017</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+
+
 export default {
   name: 'App',
-  data () {
-    return {
-      clipped: false,
-      drawer: true,
-      fixed: false,
-      items: [{
-        icon: 'bubble_chart',
-        title: 'Inspire',
-        to: '/about',
-      }, {
-        icon: 'bubble_chart',
-        title: 'Inspire',
-        to: '/',
-      }],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+  data: () => ({
+    drawer: false,
+    items: [{
+      icon: 'bubble_chart',
+      title: 'Inspire',
+      to: '/helloword',
+    }, {
+      icon: 'bubble_chart',
+      title: 'Inspire',
+      to: '/',
+    }],
+  }),
+  watch: {
+    '$route'(to, from) {
+      localStorage.setItem('route', to.path)
     }
   },
   created() {
