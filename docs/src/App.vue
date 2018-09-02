@@ -70,6 +70,7 @@ export default {
       return localStorage.setItem('route', '/')
     }
     this.$router.push(localStorage.getItem('route'))
+    //sldkjflskjfdlksjdfljksflkjsl
   }
 }
 </script>
