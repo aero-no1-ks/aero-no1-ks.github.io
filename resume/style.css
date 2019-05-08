@@ -35,6 +35,12 @@ p {
 	background: #ededed;
 }
 
+#pdf {
+  padding: 0.5rem;
+  border-radius: 3px;
+  background: transparent;
+}
+
 #name h1 {
 	font-size: 2.5em;
 	font-weight: 700;
@@ -87,7 +93,7 @@ p {
 }
 
 #contactDetails ul li a, a[href^=tel] {
-	color: #444; 
+	color: #444;
 	text-decoration: none;
 	-webkit-transition: all .3s ease-in;
 	-moz-transition: all .3s ease-in;
@@ -96,7 +102,7 @@ p {
 	transition: all .3s ease-in;
 }
 
-#contactDetails ul li a:hover { 
+#contactDetails ul li a:hover {
 	color: #cf8a05;
 }
 
@@ -161,7 +167,7 @@ section:last-child {
 	#headshot {
 		display: none;
 	}
-	
+
 	.keySkills {
 	-moz-column-count:2;
 	-webkit-column-count:2;
@@ -175,27 +181,27 @@ section:last-child {
 		margin: 10px auto;
 		min-width: 280px;
 	}
-	
+
 	#headshot {
 		display: none;
 	}
-	
+
 	#name, #contactDetails {
 		float: none;
 		width: 100%;
 		text-align: center;
 	}
-	
+
 	.sectionTitle, .sectionContent {
 		float: none;
 		width: 100%;
 	}
-	
+
 	.sectionTitle {
 		margin-left: -2px;
 		font-size: 1.25em;
 	}
-	
+
 	.keySkills {
 		-moz-column-count:2;
 		-webkit-column-count:2;
@@ -207,22 +213,22 @@ section:last-child {
 	.mainDetails {
 		padding: 15px 15px;
 	}
-	
+
 	section {
 		padding: 15px 0 0;
 	}
-	
+
 	#mainArea {
 		padding: 0 25px;
 	}
 
-	
+
 	.keySkills {
 	-moz-column-count:1;
 	-webkit-column-count:1;
 	column-count:1;
 	}
-	
+
 	#name h1 {
 		line-height: .8em;
 		margin-bottom: 4px;
@@ -302,11 +308,11 @@ section:last-child {
     -webkit-animation-name: reset, fade-in;
     -webkit-animation-duration: 1.5s;
     -webkit-animation-timing-function: ease-in;
-	
+
 	-moz-animation-name: reset, fade-in;
     -moz-animation-duration: 1.5s;
     -moz-animation-timing-function: ease-in;
-	
+
 	animation-name: reset, fade-in;
     animation-duration: 1.5s;
     animation-timing-function: ease-in;
@@ -316,16 +322,16 @@ section:last-child {
     -webkit-animation-name: reset, fade-in;
     -webkit-animation-duration: 2.5s;
     -webkit-animation-timing-function: ease-in;
-	
+
 	-moz-animation-name: reset, fade-in;
     -moz-animation-duration: 2.5s;
     -moz-animation-timing-function: ease-in;
-	
+
 	animation-name: reset, fade-in;
     animation-duration: 2.5s;
     animation-timing-function: ease-in;
 }
- 
+
 .delayOne {
 	-webkit-animation-delay: 0, .5s;
 	-moz-animation-delay: 0, .5s;
