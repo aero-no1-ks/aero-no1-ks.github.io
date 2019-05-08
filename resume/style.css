@@ -41,6 +41,22 @@ p {
   background: transparent;
 }
 
+#alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#alert p {
+  color: white !important;
+  text-align: center;
+  background: rebeccapurple;
+  font-size: 2rem;
+  padding: 1rem;
+  box-shadow: 0 0 15px 1px black;
+}
+
 #name h1 {
 	font-size: 2.5em;
 	font-weight: 700;
