@@ -1,110 +1,101 @@
 <!DOCTYPE HTML>
-<html>
+<html lang='en'>
 <head>
 	<title>athenahealth network visualization</title>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" >
-	<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui, initial-scale=1">
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge;chrome=1' >
+	<meta name='viewport' content='width=device-width, user-scalable=no, minimal-ui, initial-scale=1'>
+	<meta http-equiv='content-type' content='text/html; charset=utf-8'>
 
-	<link rel="icon" href="favicon.png">
-	<link rel="apple-touch-icon" href="favicon.png" />
-	<link rel="apple-touch-icon-precomposed" href="favicon.png"/>
 	<link href='css/main.css' rel='stylesheet' type='text/css'>
 
-	<meta name="robots" content="NOODP">
-	<meta property="description" content="Explore 24 hours of interactions between patients and healthcare providers in the athenahealth network. The visualization shows millions of patients as they seek care from doctors, labs, and insurance agencies." />
-
-	<!-- FACEBOOK -->
-	<meta property="og:title" content="Visualizing athenahealth network data" />
-	<meta property="og:description" content="See a visualization of the 24-hour patient-to-care interactions in the athenahealth network http://athenahealthvisualization.com/" />
+	<meta name='robots' content='NOODP'>
+  <script src='data/source.js'></script>
 </head>
 
-<body class="intro">
-	<div id="main">
-		<canvas id="particles"></canvas>
-		<div class="node-label">
-			<p class="node-name"></p>
+<body class='intro'>
+	<div id='main'>
+		<canvas id='particles'></canvas>
+		<div class='node-label'>
+			<p class='node-name'></p>
 		</div>
-		<div id="intro-practice" class="intro-label hidden">
-			<p class="intro-title">Practice</p>
-			<p class="intro-text"><!-- The purple moving dots represent caregiver-to-patient exchanges occurring within the doctor’s practice. --></p>
+		<div id='intro-practice' class='intro-label hidden'>
+			<p class='intro-title'>Practice</p>
+			<p class='intro-text'><!-- The purple moving dots represent caregiver-to-patient exchanges occurring within the doctor’s practice. --></p>
 		</div>
 		<div id="intro-patient" class="intro-label hidden">
 			<p class="intro-title">Patient</p>
 			<p class="intro-text">The yellow points represent patients’ engagement with their care through the athenahealth web portal.</p>
 		</div>
-		<div id="intro-orders" class="intro-label hidden">
-			<p class="intro-title">Orders</p>
-			<p class="intro-text">The blue points represent actions related to labs, consultations, or procedures occurring outside of primary care physicians’ practices.</p>
+		<div id='intro-orders' class='intro-label hidden'>
+			<p class='intro-title'>Orders</p>
+			<p class='intro-text'>The blue points represent actions related to labs, consultations, or procedures occurring outside of primary care physicians’ practices.</p>
 		</div>
-		<div id="intro-payer" class="intro-label hidden">
-			<p class="intro-title">Payer</p>
-			<p class="intro-text">The green points represent actions from insurance companies.</p>
+		<div id='intro-payer' class='intro-label hidden'>
+			<p class='intro-title'>Payer</p>
+			<p class='intro-text'>The green points represent actions from insurance companies.</p>
 		</div>
-		<div id="intro-practice-encounter" class="intro-label hidden">
-			<p class="intro-title">Practice Encounter</p>
-			<p class="intro-text">The purple points in the center circle represent patient encounters within the primary care doctor’s practice.</p>
+		<div id='intro-practice-encounter' class='intro-label hidden'>
+			<p class='intro-title'>Practice Encounter</p>
+			<p class='intro-text'>The purple points in the center circle represent patient encounters within the primary care doctor’s practice.</p>
 		</div>
-		<div id="intro-practice-patient" class="intro-label hidden">
-			<p class="intro-title">Practice to Patient</p>
-			<p class="intro-text">These purple points represent moments when practices interact with their patients on the web portal.</p>
+		<div id='intro-practice-patient' class='intro-label hidden'>
+			<p class='intro-title'>Practice to Patient</p>
+			<p class='intro-text'>These purple points represent moments when practices interact with their patients on the web portal.</p>
 		</div>
-		<div id="intro-practice-patient" class="intro-label hidden">
-			<p class="intro-title">Practice to Orders</p>
-			<p class="intro-text">These purple points represent moments when practices send or receive orders.</p>
+		<div id='intro-practice-patient' class='intro-label hidden'>
+			<p class='intro-title'>Practice to Orders</p>
+			<p class='intro-text'>These purple points represent moments when practices send or receive orders.</p>
 		</div>
-		<div id="intro-practice-patient" class="intro-label hidden">
-			<p class="intro-title">Practice to Payer</p>
-			<p class="intro-text">These purple points represent data exchanges between practices and payers.</p>
-		</div>
-	</div>
-	<div id="header">
-		<div id="loader-text"><p>Visualizing 24 hours of athenahealth network data</p></div>
-		<a href="http://www.athenahealth.com/" target="_"><div id="logo"></div></a>
-		<div id="timeline" class="inactive">
-			<div id="labels-left">
-				<p id="series-name" class="label">Payment by Patient</p>
-				<p id="series-count" class="fixed">549,489</p>
-			</div>
-			<canvas id="histo"> </canvas>
-			<div id="labels-right">
-				<p id="series-time" class="fixed"><span id="hh">10</span>:<span id="mm">47</span><!-- :<span id="ss">47</span>  --><span id="ampm">am</span></p>
-			</div>
-		</div>
-		<div id="group-legend">
-			<div id="group-name" class="label active"></div>
-			<canvas id="legend"></canvas>
+		<div id='intro-practice-patient' class='intro-label hidden'>
+			<p class='intro-title'>Practice to Payer</p>
+			<p class='intro-text'>These purple points represent data exchanges between practices and payers.</p>
 		</div>
 	</div>
-	<div id="zoom-controls" class="inactive">
-		<div id="z-in"  class="button icon">+</div>
-		<div id="z-out" class="button icon">-</div>
-		<div id="z-set" class="button icon">r</div>
+	<div id='header'>
+		<div id='timeline' class='inactive' style='display: none !important;'>
+			<div id='labels-left'>
+				<p id='series-name' class='label'>Payment by Patient</p>
+				<p id='series-count' class='fixed'>549,489</p>
+			</div>
+			<canvas id='histo'></canvas>
+			<div id='labels-right'>
+				<p id='series-time' class='fixed'><span id='hh'>10</span>:<span id='mm'>47</span><!-- :<span id='ss'>47</span>  --><span id='ampm'>am</span></p>
+			</div>
+		</div>
+		<div id='group-legend'>
+			<div id='group-name' class='label active'></div>
+			<canvas id='legend'></canvas>
+		</div>
+	</div>
+	<div id='zoom-controls' class='inactive'>
+		<div id='z-in'  class='button icon'>+</div>
+		<div id='z-out' class='button icon'>-</div>
+		<div id='z-set' class='button icon'>r</div>
 	</div>
 
-	<!-- BEGIN SHADER SOURCES -->
-<script id="gravitron-fs" type="x-shader/x-fragment">
+<!-- BEGIN SHADER SOURCES -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.14/lodash.min.js'></script>
+<script id='gravitron-fs' type='x-shader/x-fragment'>
 precision mediump float;varying vec4 vColor;void main(void){gl_FragColor=vColor;}
 </script>
-<script id="gravitron-vs" type="x-shader/x-vertex">
+<script id='gravitron-vs' type='x-shader/x-vertex'>
 precision mediump float;uniform vec2 resolution;uniform mat3 matrix;attribute vec2 grav_position;attribute vec3 grav_color;attribute float grav_alpha;varying vec4 vColor;void main(void){vec3 a=vec3(grav_position/resolution,1.0);a.x-=1.0;a.y=1.0-a.y;gl_Position=vec4((matrix*a).xy,0.0,1.0);vColor=vec4(grav_color/255.0,grav_alpha);}
 </script>
-<script id="lerpers-vs" type="x-shader/x-vertex">
+<script id='lerpers-vs' type='x-shader/x-vertex'>
 precision mediump float;uniform sampler2D gradients;uniform vec2 resolution;uniform vec4 centerLocation[62];uniform float centerGroup[62];uniform float scale;uniform mat3 matrix;attribute vec2 offset;attribute vec4 pathInfo;attribute vec4 particleInfo;attribute vec4 controlPoints;varying vec3 vColor;varying float vAlpha;float a(float b,float c,float d,float e,float f);vec2 g(float h,int i,int j);vec2 k(float h,int i,int j,int l,float m);vec2 n(float h,int i,int j,int l,float m,float o);void main(void){float p=pathInfo.x;float q=pathInfo.y;float m=pathInfo.z;float l=pathInfo.w;float h=particleInfo.x;float r=particleInfo.y;float o=particleInfo.z;float s=particleInfo.w;vec2 t=vec2(0.5,-0.5);float u=1.0-2.0*abs(0.5-h);float v=centerGroup[int(p)];float w=centerGroup[int(q)];float x=(v*6.0+w+0.5)/128.0;vec4 y=texture2D(gradients,vec2(h,x));vColor=y.rgb;vAlpha=r;if(m==1.0){t=g(h,int(p),int(q));}else if(m==2.0||m==4.0){t=k(h,int(p),int(q),int(l),m);}else if(m==3.0||m==5.0){t=n(h,int(p),int(q),int(l),m,o);}t=t+offset/resolution*(1.0+o*u);gl_Position=vec4((matrix*vec3(t,1)).xy,0.0,1.0);gl_PointSize=(6.0+u*2.0)*s*scale;}vec2 g(float h,int i,int j){vec2 z=centerLocation[i].xy;vec2 A=centerLocation[j].xy;vec2 B=A-z;float C=atan(B.y,B.x);float D=sqrt(B.x*B.x+B.y*B.y);float E=3.1415926*2.0;float F=controlPoints.x+C;float G=controlPoints.y*D;float H=controlPoints.z+C;float I=controlPoints.w*D;vec2 J=vec2(cos(F)*G,sin(F)*G)+z.xy;vec2 K=vec2(cos(H)*I,sin(H)*I)+A.xy;float L=1.0-h;vec2 t=z*L*L*L+3.0*J*h*L*L+3.0*K*h*h*L+A*h*h*h;t=t/resolution;return vec2(t.x*2.0-1.0,t.y*-2.0+1.0);}vec2 k(float h,int i,int j,int l,float m){float M=3.1415926;vec4 z=centerLocation[i];vec4 N=centerLocation[j];float O=N.p-z.p;float P=N.q-z.q;if(l==1){if(O<-M*0.5) O+=M*2.0;if(O<-M*0.5) O+=M*2.0;}else{if(O>M*0.5) O-=M*2.0;if(O>M*0.5) O-=M*2.0;}float Q=0.27+step(3.0,m)*.35;P*=0.15+abs(O/M)*Q;float R=z.q+P;float S=M*(1.0-h);float T=sin(S);S=(1.0+cos(S))/2.0;float U=z.p+S*O;if(h>=0.5){T=R+(1.0-T)*(N.q-R);}else{T=z.q+T*P;}vec2 t=vec2(cos(U)*T,sin(U)*T);t/=resolution;return vec2(t.x*2.0,t.y*-2.0);}vec2 n(float h,int i,int j,int l,float m,float o){float M=3.1415926;vec4 z=centerLocation[i];vec4 N=centerLocation[j];float O=N.p-z.p;float P=N.q-z.q;if(l==1){if(O<-M*0.5) O+=M*2.0;if(O<-M*0.5) O+=M*2.0;}else{if(O>M*0.5) O-=M*2.0;if(O>M*0.5) O-=M*2.0;}float V=5.0+step(4.0,m)*13.0;float W=60.0+step(4.0,m)*112.0;float X=V+pow(abs(O)/M*o,0.5)*W;X+=float(l+1)*5.0;float S=M*(1.0-h);float U=z.p+O*(1.0+cos(S))/2.0;float T=z.q+X*sin(S);vec2 t=vec2(cos(U)*T,sin(U)*T);t/=resolution;return vec2(t.x*2.0,t.y*-2.0);}float a(float b,float c,float d,float e,float f){return e+(b-c)/(d-c)*(f-e);}
 </script>
-<script id="particle-fs" type="x-shader/x-fragment">
+<script id='particle-fs' type='x-shader/x-fragment'>
 precision mediump float;uniform sampler2D hexture;varying vec3 vColor;varying float vAlpha;void main(void){vec4 a=texture2D(hexture,gl_PointCoord.st);gl_FragColor=vec4(vColor,vAlpha*a.a);}
 </script>
-<script id="pathlength-fs" type="x-shader/x-fragment">
+<script id='pathlength-fs' type='x-shader/x-fragment'>
 precision mediump float;uniform sampler2D gradients;varying vec4 v_pathInfo;varying vec4 origin;varying vec4 destination;varying vec4 v_controlPoints;float a(float b,float c,float d,float e,float f);vec2 g(float h,float i,float j,vec4 k,vec4 l,vec4 m);vec2 n(float h,vec4 k,vec4 l,int o);vec2 p(float h,vec4 k,vec4 l,int o);vec2 q(float h,vec4 k,vec4 l,int o);vec2 r(float h,vec4 k,vec4 l,int o);void main(void){float s=40.0;vec2 t;vec2 u;if(v_pathInfo.z==1.0){u=g(0.0,v_pathInfo.x,v_pathInfo.y,origin,destination,v_controlPoints);for(float h=0.1;h<=1.0;h+=.2){t=g(h,v_pathInfo.x,v_pathInfo.y,origin,destination,v_controlPoints);s+=distance(u,t);u=t;}}else if(v_pathInfo.z==2.0){u=n(0.0,origin,destination,int(v_pathInfo.w));for(float h=0.1;h<=1.0;h+=.2){t=n(h,origin,destination,int(v_pathInfo.w));s+=distance(u,t);u=t;}}else if(v_pathInfo.z==3.0){u=p(0.0,origin,destination,int(v_pathInfo.w));for(float h=0.1;h<=1.0;h+=.2){t=p(h,origin,destination,int(v_pathInfo.w));s+=distance(u,t);u=t;}}else if(v_pathInfo.z==4.0){u=r(0.0,origin,destination,int(v_pathInfo.w));for(float h=0.1;h<=1.0;h+=.2){t=r(h,origin,destination,int(v_pathInfo.w));s+=distance(u,t);u=t;}}else if(v_pathInfo.z==5.0){u=q(0.0,origin,destination,int(v_pathInfo.w));for(float h=0.1;h<=1.0;h+=.2){t=q(h,origin,destination,int(v_pathInfo.w));s+=distance(u,t);u=t;}}s=distance(destination.xy,origin.xy);float v=floor(s/256.0);float w=s-v*256.0;gl_FragColor=vec4(w/255.0,v/255.0,0.0,1.0);}vec2 g(float h,float i,float j,vec4 k,vec4 l,vec4 m){float x=atan(l.y-k.y,l.x-k.x);vec2 y=(l-k).xy;float s=sqrt(y.x*y.x+y.y*y.y);float z=3.1415926*2.0;float A=m.x+x;float B=m.y*s;float C=m.z+x;float D=m.w*s;vec2 E=vec2(cos(A)*B,sin(A)*B)+k.xy;vec2 F=vec2(cos(C)*D,sin(C)*D)+l.xy;float G=1.0-h;vec2 t=k.xy*G*G*G+3.0*E*h*G*G+3.0*F*h*h*G+l.xy*h*h*h;return vec2(t.x*2.0-1.0,t.y*-2.0+1.0);}vec2 r(float h,vec4 k,vec4 l,int o){float H=3.1415926;float I=l.p-k.p;float J=l.q-k.q;if(o==1){if(I<-H*0.5) I+=H*2.0;}else{if(I>H*0.5) I-=H*2.0;}J*=0.15+abs(I/H)*0.62;float K=k.q+J;float L=H*(1.0-h);float M=sin(L);L=(1.0+cos(L))/2.0;float N=k.p+L*I;if(h>=0.5){M=K+(1.0-M)*(l.q-K);}else{M=k.q+M*J;}vec2 t=vec2(cos(N)*M,sin(N)*M);return vec2(t.x*2.0,t.y*-2.0);}vec2 q(float h,vec4 k,vec4 l,int o){float H=3.1415926;float I=l.p-k.p;float J=l.q-k.q;if(o==1){if(I<-H*0.5) I+=H*2.0;}else{if(I>H*0.5) I-=H*2.0;}float O=a(pow(abs(I)/H,0.5),0.0,1.0,18.0,180.0);O+=float(o+1)*5.0;float L=H*(1.0-h);float N=k.p+I*(1.0+cos(L))/2.0;float M=k.q+O*sin(L);vec2 t=vec2(cos(N)*M,sin(N)*M);return vec2(t.x*2.0,t.y*-2.0);}vec2 n(float h,vec4 k,vec4 l,int o){float H=3.1415926;float I=l.p-k.p;float J=l.q-k.q;if(o==1){if(I<-H*0.5) I+=H*2.0;}else{if(I>H*0.5) I-=H*2.0;}J*=0.15+abs(I/H)*0.27;float K=k.q+J;float L=H*(1.0-h);float M=sin(L);L=(1.0+cos(L))/2.0;float N=k.p+L*I;if(h>=0.5){M=K+(1.0-M)*(l.q-K);}else{M=k.q+M*J;}vec2 t=vec2(cos(N)*M,sin(N)*M);return vec2(t.x*2.0,t.y*-2.0);}vec2 p(float h,vec4 k,vec4 l,int o){float H=3.1415926;float I=l.p-k.p;float J=l.q-k.q;if(o==1){if(I<-H*0.5) I+=H*2.0;}else{if(I>H*0.5) I-=H*2.0;}float O=a(pow(abs(I)/H,0.5),0.0,1.0,5.0,65.0);O+=float(o+1)*5.0;float L=H*(1.0-h);float N=k.p+I*(1.0+cos(L))/2.0;float M=k.q+O*sin(L);vec2 t=vec2(cos(N)*M,sin(N)*M);return vec2(t.x*2.0,t.y*-2.0);}float a(float b,float c,float d,float e,float f){return e+(b-c)/(d-c)*(f-e);}
 </script>
-<script id="pathlength-vs" type="x-shader/x-vertex">
+<script id='pathlength-vs' type='x-shader/x-vertex'>
 precision mediump float;uniform vec4 centerLocation[62];uniform vec2 resolution;attribute vec4 pathData;attribute vec4 controlPoints;varying vec4 v_pathInfo;varying vec4 origin;varying vec4 destination;varying vec4 v_controlPoints;void main(){highp int a=int(pathData.x);highp int b=int(pathData.y);origin=centerLocation[a];destination=centerLocation[b];v_pathInfo=pathData;v_controlPoints=controlPoints;vec2 c=(pathData.xy+.5)/resolution-1.0;gl_Position=vec4(c,0,1);}
 </script>
-	<!-- END SHADER SOURCES -->
-
-	<script src="./all.min.js" charset="utf-8" async="async" ></script>
+<script src='./all.min.js' charset='utf-8' async='async'></script>
 
 
 
