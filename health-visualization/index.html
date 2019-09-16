@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang='en'>
 <head>
-	<title>athenahealth network visualization</title>
+	<title>Network visualization</title>
 	<meta http-equiv='Content-type' content='text/html; charset=utf-8'>
 	<meta http-equiv='X-UA-Compatible' content='IE=Edge;chrome=1' >
 	<meta name='viewport' content='width=device-width, user-scalable=no, minimal-ui, initial-scale=1'>
@@ -20,22 +20,22 @@
 			<p class='node-name'></p>
 		</div>
 		<div id='intro-practice' class='intro-label hidden'>
-			<p class='intro-title'>Practice</p>
+			<p class='intro-title'>Airline</p>
 			<p class='intro-text'><!-- The purple moving dots represent caregiver-to-patient exchanges occurring within the doctor’s practice. --></p>
 		</div>
 		<div id="intro-patient" class="intro-label hidden">
-			<p class="intro-title">Patient</p>
+			<p class="intro-title">Airport</p>
 			<p class="intro-text">The yellow points represent patients’ engagement with their care through the athenahealth web portal.</p>
 		</div>
 		<div id='intro-orders' class='intro-label hidden'>
-			<p class='intro-title'>Orders</p>
+			<p class='intro-title'>Aircraft</p>
 			<p class='intro-text'>The blue points represent actions related to labs, consultations, or procedures occurring outside of primary care physicians’ practices.</p>
 		</div>
 		<div id='intro-payer' class='intro-label hidden'>
-			<p class='intro-title'>Payer</p>
+			<p class='intro-title'>Demand</p>
 			<p class='intro-text'>The green points represent actions from insurance companies.</p>
 		</div>
-		<div id='intro-practice-encounter' class='intro-label hidden'>
+		<!-- <div id='intro-practice-encounter' class='intro-label hidden'>
 			<p class='intro-title'>Practice Encounter</p>
 			<p class='intro-text'>The purple points in the center circle represent patient encounters within the primary care doctor’s practice.</p>
 		</div>
@@ -50,7 +50,7 @@
 		<div id='intro-practice-patient' class='intro-label hidden'>
 			<p class='intro-title'>Practice to Payer</p>
 			<p class='intro-text'>These purple points represent data exchanges between practices and payers.</p>
-		</div>
+		</div> -->
 	</div>
 	<div id='header'>
 		<div id='timeline' class='inactive' style='display: none !important;'>
@@ -60,19 +60,23 @@
 			</div>
 			<canvas id='histo'></canvas>
 			<div id='labels-right'>
-				<p id='series-time' class='fixed'><span id='hh'>10</span>:<span id='mm'>47</span><!-- :<span id='ss'>47</span>  --><span id='ampm'>am</span></p>
+				<p id='series-time' class='fixed'>
+          <!-- <span id='hh'>10</span>:<span id='mm'>47</span> -->
+          <!-- :<span id='ss'>47</span>  -->
+          <!-- <span id='ampm'>am</span> -->
+        </p>
 			</div>
 		</div>
-		<div id='group-legend'>
+		<div id='group-legend' style='display: none !important;'>
 			<div id='group-name' class='label active'></div>
 			<canvas id='legend'></canvas>
 		</div>
 	</div>
-	<div id='zoom-controls' class='inactive'>
+	<!-- <div id='zoom-controls' class='inactive'>
 		<div id='z-in'  class='button icon'>+</div>
 		<div id='z-out' class='button icon'>-</div>
 		<div id='z-set' class='button icon'>r</div>
-	</div>
+	</div> -->
 
 <!-- BEGIN SHADER SOURCES -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
