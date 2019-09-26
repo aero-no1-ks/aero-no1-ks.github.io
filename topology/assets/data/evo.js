@@ -1,0 +1,1 @@
+const evolution = [{yi:1927,yt:1936,nAP:55},{yi:1937,yt:1946,nAP:288},{yi:1947,yt:1956,nAP:352},{yi:1957,yt:1966,nAP:380},{yi:1967,yt:1976,nAP:402},{yi:1977,yt:1986,nAP:406},{yi:1987,yt:1996,nAP:414},{yi:1997,yt:2006,nAP:420},{yi:2007,yt:2016,nAP:425},{yi:2017,yt:2018,nAP:425}]; export { evolution }
