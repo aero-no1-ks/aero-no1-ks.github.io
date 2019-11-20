@@ -1,0 +1,42 @@
+#gl {
+	width: 100vw;
+	height: 100vh;
+	left: 0;
+	top: 0;
+	position: absolute;
+}
+
+canvas {
+	display: block;
+}
+
+.frame {
+  position: fixed;
+  text-align: left;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  display: grid;
+  align-content: space-between;
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  padding: 2rem 3rem;
+  pointer-events: none;
+}
+
+.frame > * {
+	position: relative;
+}
+
+.frame__content {
+	pointer-events: none;
+  line-height: 1.2;
+	margin-top: 20vh;
+  font-size: 9vw;
+	text-transform: uppercase;
+	font-weight: bold;
+	mix-blend-mode: soft-light;
+	text-align: left;
+	color: #fff;
+}
