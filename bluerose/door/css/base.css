@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'NIXGONM-Vb';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 #gl {
 	width: 100vw;
 	height: 100vh;
@@ -30,6 +37,7 @@ canvas {
 }
 
 .frame__content {
+  font-family: 'NIXGONM-Vb';
 	pointer-events: none;
   line-height: 1.2;
 	margin-top: 20vh;
